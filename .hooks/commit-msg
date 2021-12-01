@@ -1,11 +1,8 @@
 #!/bin/bash
 
-# Get the commit message from file, which just contains the message
 commitMessage=$(cat $1)
-
-# Ensure each commit message is formatted
 pattern="\[[0-9]{1,}\]\s.+"
 if [[ ! "$commitMessage" =~ $pattern  ]]; then
-    echo "Please add an issue number to the commit message: $commitMessage"
+    echo "Your commit should have a format of [number] task"
     exit 1
 fi
