@@ -1,5 +1,5 @@
 #!/bin/bash
 
-your_command_string="vendor/bin/phpstan analyse -l 9 src"
+your_command_string="phpcbf src/Controller/TestController.php"
 output=$(eval "$your_command_string")
 echo "$output"
