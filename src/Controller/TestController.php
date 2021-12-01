@@ -8,8 +8,10 @@ class TestController extends AbstractController
 {
     public function index():Response
     {
-        return $this->json([
+        return $this->json(
+            [
             'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/TestController.php',]);
+            'path' => 'src/Controller/TestController.php',]
+        );
     }
 }
