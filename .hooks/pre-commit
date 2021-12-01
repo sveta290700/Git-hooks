@@ -14,11 +14,11 @@ function __run()
     exitcode=$?
 
     if [[ 0 == $exitcode || 130 == $exitcode ]]; then
-        echo -e "${C_GREEN}OK!${C_RESET}\n\n$output"
+        echo -e "${C_GREEN}OK!${C_RESET}\n\n"
     else
         echo -e "${C_RED}NOK!${C_RESET}\n\n$output"
         exit 1
     fi
 }
 
-__run "xargs -r vendor/bin/phpstan analyse src"
+__run "xargs -r vendor/bin/phpstan analyse  -l 9 src"
