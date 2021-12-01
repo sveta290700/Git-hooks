@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
-# get bash colors and styles here:
-# http://misc.flogisoft.com/bash/tip_colors_and_formatting
 C_RESET='\e[0m'
 C_RED='\e[31m'
 C_GREEN='\e[32m'
 C_YELLOW='\e[33m'
 
-function __run() #(step, name, cmd)
+function __run()
 {
     local color output exitcode
 
@@ -16,13 +14,11 @@ function __run() #(step, name, cmd)
     exitcode=$?
 
     if [[ 0 == $exitcode || 130 == $exitcode ]]; then
-        echo -e "${C_GREEN}OK!${C_RESET}"
+        echo -e "${C_GREEN}OK!${C_RESET}\n\n$output"
     else
         echo -e "${C_RED}NOK!${C_RESET}\n\n$output"
         exit 1
     fi
 }
 
-modified="git diff --diff-filter=M --name-only --cached  | grep \".php$\""
-
-__run "${modified} | xargs -r vendor/bin/phpstan analyse"
+__run "xargs -r vendor/bin/phpstan analyse src"
