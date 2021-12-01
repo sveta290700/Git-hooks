@@ -1,24 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-C_RESET='\e[0m'
-C_RED='\e[31m'
-C_GREEN='\e[32m'
-C_YELLOW='\e[33m'
-
-function __run()
-{
-    local color output exitcode
-
-    printf "${C_YELLOW}[%s]${C_RESET} %-20s" "$1" "$2"
-    output=$(eval "$3" 2>&1)
-    exitcode=$?
-
-    if [[ 0 == $exitcode || 130 == $exitcode ]]; then
-        echo -e "${C_GREEN}OK!${C_RESET}\n\n"
-    else
-        echo -e "${C_RED}NOK!${C_RESET}\n\n$output"
-        exit 1
-    fi
-}
-
-__run "xargs -r vendor/bin/phpstan analyse  -l 9 src"
+your_command_string="vendor/bin/phpstan analyse -l 9 src"
+output=$(eval "$your_command_string")
+echo "$output"
